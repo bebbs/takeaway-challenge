@@ -6,4 +6,5 @@ class Dish
   end
 
   attr_reader :name, :price
+  
 end

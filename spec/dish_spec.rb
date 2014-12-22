@@ -7,4 +7,5 @@ describe Dish do
   it 'should be created with a price' do
     expect(pizza.price).to eq 7
   end
+  
 end
