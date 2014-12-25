@@ -1,13 +1,10 @@
 require 'menu'
 
 describe Menu do
-  let(:menu){Menu.new}
-  let(:pizza){double :pizza, name: 'pizza', price: 7}
-  let(:lasagne){double :lasagne, name: 'lasagne', price: 9}
+  let(:menu){Menu.new('indian')}
 
-  it 'should have a list of items' do
-    menu.add_items(pizza, lasagne)
-    expect(menu.menu_items).to eq([pizza, lasagne])
+  it 'should load a menu when instantiated' do
+    expect(menu.menu_items.length).to be >= 3
   end
 
 end

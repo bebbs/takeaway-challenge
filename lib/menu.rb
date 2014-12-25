@@ -1,14 +1,19 @@
 class Menu
 
-  def initialize
+  require 'csv'
+
+  def initialize(restaurant)
     @menu_items = []
+    load_menu(restaurant)
   end
 
-  attr_reader :menu_items
+  attr_accessor :menu_items
 
-  def add_items(*args)
-    args.each do |item|
-      @menu_items << item
+  def load_menu(restaurant)
+    CSV.foreach("#{restaurant}.csv", {col_sep: ','}) do |line|
+      item = line[0]
+      price = line[1]
+      @menu_items << {dish: item, price: price}
     end
   end
 

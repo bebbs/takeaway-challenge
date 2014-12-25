@@ -2,10 +2,11 @@ require 'order'
 
 describe Order do
 
-  let(:order){Order.new(Menu.new)}
-  let(:pizza){double :pizza, name: 'pizza', price: 7}
-  let(:burger){double :burger, name: 'burger', price: 8}
-  let(:lasagne){double :lasagne, name: 'lasagne', price: 9}
+  let(:order){Order.new(Menu.new('indian'))}
+  let(:pizza){double :pizza, name: 'pizza', price: 7.00}
+  let(:burger){double :burger, name: 'burger', price: 8.00}
+  let(:lasagne){double :lasagne, name: 'lasagne', price: 9.00}
+  let(:linguine){double :linguine, name: 'linguine', price: 9.00}
 
   context 'making an order' do
 
@@ -16,7 +17,7 @@ describe Order do
     end
 
     it 'should keep a running subtotal' do
-      expect(order.subtotal).to eq 24
+      expect(order.subtotal).to eq 24.00
     end
 
   end

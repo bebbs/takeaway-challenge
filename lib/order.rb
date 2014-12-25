@@ -1,11 +1,12 @@
 class Order
 
-  def initialize(menu)
+  def initialize menu
     @basket = []
     @menu = menu
   end
 
   attr_reader :basket
+  attr_reader :menu
 
   def add_to_order(*args)
     args.each do |item|
@@ -15,7 +16,7 @@ class Order
 
   def subtotal
     arr = basket.map {|x| x.price}
-    arr.inject(:+)
+    arr.inject(:+).to_f
   end
 
 end
