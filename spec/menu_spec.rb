@@ -7,4 +7,8 @@ describe Menu do
     expect(menu.menu_items.length).to be >= 3
   end
 
+  it 'dishes should have a name' do
+    expect(menu.read.first.has_value?('korma')).to be true
+  end
+
 end

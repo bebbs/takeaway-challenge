@@ -17,4 +17,8 @@ class Menu
     end
   end
 
+  def read
+    menu_items.each {|item| item}
+  end
+
 end
