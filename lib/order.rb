@@ -13,14 +13,15 @@ class Order
   end
 
   def subtotal
-    arr = basket.map {|x| x.price}
+    arr = []
+    basket.each do |item|
+      arr << menu.price(item)
+    end
     arr.inject(:+).to_f
   end
 
   def verify_item(dish)
-    unless menu.has_item?(dish)
-      raise 'This dish is not available!'
-    end
+    raise 'This dish is not available!' unless menu.has_item?(dish)
   end
 
 end

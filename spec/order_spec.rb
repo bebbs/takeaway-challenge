@@ -16,8 +16,8 @@ describe Order do
     end
 
     it 'should keep a running subtotal' do
-      order.add_to_order('korma', 2)
-      expect(order.subtotal).to eq 18.00
+      order.add_to_order('korma', 3)
+      expect(order.subtotal).to eq 27.00
     end
 
   end

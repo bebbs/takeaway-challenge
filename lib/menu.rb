@@ -23,4 +23,8 @@ class Menu
     menu.has_key?(item.to_sym)
   end
 
+  def price(item)
+    menu[item.to_sym].to_f
+  end
+
 end

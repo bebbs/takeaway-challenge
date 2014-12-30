@@ -8,7 +8,7 @@ describe Menu do
   end
 
   it 'dishes should have a price' do
-    expect(indian_takeaway.menu[:korma]).to eq 9.00
+    expect(indian_takeaway.price('korma')).to eq 9.00
   end
 
 end
