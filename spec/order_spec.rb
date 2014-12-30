@@ -6,14 +6,18 @@ describe Order do
 
   context 'making an order' do
 
-    it 'should be able to order from the menu' do
-      add_to_order()
-      expect(order.basket).to eq 3
+    it 'should be able to order an item' do
+      order.add_to_order('korma', 3)
+      expect(order.basket.length).to eq 3
+    end
+
+    it 'should only be able to order from the menu' do
+      expect{order.add_to_order('lasagne', 1)}.to raise_error(RuntimeError, 'This dish is not available!')
     end
 
     it 'should keep a running subtotal' do
-      order.add_to_order(pizza,burger,lasagne)
-      expect(order.subtotal).to eq 24.00
+      order.add_to_order('korma', 2)
+      expect(order.subtotal).to eq 18.00
     end
 
   end
