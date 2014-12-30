@@ -8,7 +8,11 @@ describe Menu do
   end
 
   it 'dishes should have a name' do
-    expect(menu.read.first.has_value?('korma')).to be true
+    expect(menu.menu_items.first[:dish]).to eq 'korma'
+  end
+
+  it 'dishes should have a price' do
+    expect(menu.menu_items.first[:price]).to eq 9.00
   end
 
 end

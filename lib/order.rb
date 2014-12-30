@@ -5,8 +5,7 @@ class Order
     @menu = menu
   end
 
-  attr_reader :basket
-  attr_reader :menu
+  attr_reader :basket, :menu
 
   def add_to_order(*args)
     args.each do |item|
