@@ -2,8 +2,9 @@ require 'order'
 
 describe Order do
 
-  let(:order){Order.new}
-  let(:dish){double :dish, name: 'korma', price: 20}
+  let(:order){Order.new('indian')}
+  let(:dish){double :dish, name: 'korma', price: 9}
+  let(:pizza){double :bad_dish, name: 'pizza', price: 10}
 
   it 'should not be paid on creation of an order' do
     expect(order.paid?).to be false
@@ -17,6 +18,11 @@ describe Order do
   it 'should accept a dish' do
     order.add_item(dish)
     expect(order.customer_order).not_to be_empty
+  end
+
+  it 'should not accept a dish that isn\'t on the menu' do
+    order.add_item(pizza)
+    expect(order.customer_order).to be_empty
   end
 
 
