@@ -1,6 +1,20 @@
 takeaway-challenge
 ==================
 
+Makers Academy Xmas Challenge - Design and implement a takeaway ordering program using the Twilio API. 
+
+Done:
+* Menu & Dish classes: Menu can load a file of items and prices, and use this information to populate instances of Dish.
+* Ordering: Customers can add dishes to their order in given quantities.
+
+Doing:
+* When added to an order, dishes should be verified to exist on the menu.
+
+To do:
+* Add Twilio functionality to send order updates to customers.
+* Subtotal order from dishes, check against customer total expectations.
+
+
 Brief
 -----
 Write a Takeaway program.
