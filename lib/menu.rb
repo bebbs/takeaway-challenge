@@ -23,13 +23,16 @@ class Menu
     dishes << new_dish
   end
 
-
   def dish_count
     dishes.length
   end
 
   def exists?(dish)
     dishes.any? { |d| d.name == dish }
+  end
+
+  def fetch_by_name(dish)
+    dishes.select { |d| d.name == dish }.first
   end
 
 end
