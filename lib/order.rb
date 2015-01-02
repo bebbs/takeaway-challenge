@@ -30,4 +30,8 @@ class Order
     price_arr.inject(:+)
   end
 
+  def check_subtotal(number)
+    number == subtotal
+  end
+
 end

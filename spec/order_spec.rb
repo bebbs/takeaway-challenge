@@ -23,9 +23,18 @@ describe Order do
     expect(order.add_item('pizza', 1)).to eq "This dish is not available!"
   end
 
-  it 'should have a subtotal' do
-    order.add_item('madras', 2)
-    expect(order.subtotal).to eq 29
+  context 'verifying the total' do
+
+    before(:each){order.add_item('madras', 2)}
+
+    it 'should have a subtotal' do
+      expect(order.subtotal).to eq 29
+    end
+
+    it 'should check against the expected subtotal' do
+      expect(order.check_subtotal(29)).to be true
+    end
+
   end
 
 

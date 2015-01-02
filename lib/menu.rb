@@ -3,14 +3,13 @@ class Menu
   require 'csv'
 
   def initialize(restaurant)
-    @menu = menu
     @dish = {}
     @dishes = []
     @name = restaurant
     load_menu(restaurant)
   end
 
-  attr_reader :name, :menu, :dish, :dishes
+  attr_reader :name, :dish, :dishes
 
   def load_menu(restaurant)
     CSV.foreach("#{restaurant}.csv", {col_sep: ','}) do |line|
