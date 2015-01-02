@@ -21,8 +21,7 @@ describe Order do
   end
 
   it 'should not accept a dish that isn\'t on the menu' do
-    order.add_item(pizza)
-    expect(order.customer_order).to be_empty
+    expect(order.add_item(pizza, 1)).to eq "This dish is not available!"
   end
 
 

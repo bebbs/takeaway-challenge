@@ -16,10 +16,8 @@ class Order
     @paid = true
   end
 
-  def add_item(dish, quantity=1)
-    if verified_dish?(dish)
-      quantity.times {customer_order << dish}
-    end
+  def add_to_order(dish, quantity=1)
+    verified_dish?(dish) ? (quantity.times {customer_order << dish}) : (return "This dish is not available!")
   end
 
   def verified_dish?(dish)
