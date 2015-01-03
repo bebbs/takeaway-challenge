@@ -4,9 +4,10 @@ class OrderInterface
     @order = Order.new(restaurant)
     @menu = order.menu
     option_menu
+    @phone = Phone.new
   end
 
-  attr_reader :order, :menu
+  attr_reader :order, :menu, :phone
 
   def option_menu
     loop do
@@ -60,9 +61,7 @@ class OrderInterface
   def view_order
     puts 'Your order:'
     puts '--------------'
-    order.customer_order.each do |dish|
-      puts "#{dish.name}: #{dish.price}"
-    end
+    order.customer_order.each {|dish| puts "#{dish.name}: #{dish.price}"}
     puts '--------------'
   end
 
@@ -70,12 +69,10 @@ class OrderInterface
     view_order
     puts 'To confirm your order, please enter the expected total:'
     if order.subtotal == order.check_subtotal(input)
-      order.send_text
+      phone.send_text
     else
       raise 'Order not confirmed, subtotal doesn\'t match the expected value.'
     end
   end
 
 end
-
-int = OrderInterface.new('indian')

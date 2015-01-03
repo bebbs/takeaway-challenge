@@ -1,8 +1,5 @@
 class Order
 
-  require 'twilio-ruby'
-  require 'twilio_secrets'
-
   def initialize(restaurant)
     @paid = false
     @customer_order = []
