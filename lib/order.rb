@@ -8,17 +8,9 @@ class Order
 
   attr_reader :customer_order, :menu
 
-  def paid?
-    @paid
-  end
-
-  def pay!
-    @paid = true
-  end
-
   def add_item(dish, quantity=1)
     dish_object = menu.fetch_by_name(dish)
-    verified_dish?(dish) ? (quantity.times {customer_order << dish_object}) : (return "This dish is not available!")
+    verified_dish?(dish) ? (quantity.times {customer_order << dish_object}) : 'This dish is not available!'
   end
 
   def verified_dish?(dish)

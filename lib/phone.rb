@@ -1,4 +1,4 @@
-class Phone
+module Phone
 
   require 'twilio-ruby'
 

@@ -4,10 +4,8 @@ describe Phone do
 
   let(:phone){Phone.new}
 
-  # What can I test here?
+  it 'should send a text through the Twilio API' do
 
-  it '' do
-    
   end
 
 end

@@ -1,13 +1,16 @@
+require_relative 'phone'
+
 class OrderInterface
+
+  include Phone
 
   def initialize(restaurant)
     @order = Order.new(restaurant)
     @menu = order.menu
     option_menu
-    @phone = Phone.new
   end
 
-  attr_reader :order, :menu, :phone
+  attr_reader :order, :menu
 
   def option_menu
     loop do
@@ -41,38 +44,45 @@ class OrderInterface
   end
 
   def display_menu
-    puts 'Dish: | Price:'
-    puts '--------------'
-    menu.dishes.each do |dish|
-      puts "#{dish.name}: £#{dish.price}"
-    end
-    puts '--------------'
+    display(:menu_header)
+    display(:bar)
+    menu.dishes.each {|dish| puts "#{dish.name}: £#{dish.price}"}
+    display(:bar)
   end
 
   def add_to_order
+    display(:bar)
     puts 'Which dish would you like to order?'
     print 'Enter the dish name: '
     name_input = STDIN.gets.chomp 
     print 'Quantity: '
     quantity_input = STDIN.gets.chomp
     order.add_item(name_input, quantity_input.to_i)
+    display(:bar)
   end
 
   def view_order
     puts 'Your order:'
-    puts '--------------'
+    display(:bar)
     order.customer_order.each {|dish| puts "#{dish.name}: #{dish.price}"}
-    puts '--------------'
+    display(:bar)
   end
 
   def confirm_order
     view_order
-    puts 'To confirm your order, please enter the expected total:'
-    if order.subtotal == order.check_subtotal(input)
-      phone.send_text
-    else
-      raise 'Order not confirmed, subtotal doesn\'t match the expected value.'
+    send_text
+    display(:confirmed)
+    exit
+  end
+
+  def display(option)
+    case option
+      when :confirmed then puts 'Order confirmed!'
+      when :menu_header then puts 'Dish:   | Price:    '
+      when :bar then puts '--------------------'
     end
   end
 
 end
+
+interface = OrderInterface.new('indian')
