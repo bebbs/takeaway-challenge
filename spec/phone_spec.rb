@@ -1,10 +1,13 @@
 require 'phone'
 
-class PhoneWrapper
-  include Phone
-end
-
 describe Phone do
 
-  let(:phone){PhoneWrapper.new}
+  let(:phone){Phone.new}
+
+  # What can I test here?
+
+  it '' do
+    
+  end
+
 end

@@ -12,9 +12,9 @@ class Phone
 
   def send_text
     client.messages.create(
-      :from =>  ENV['TWILIO_NUMBER'],
-      :to   =>  ENV['PERSONAL_NUMBER'],
-      :body =>  message_body)
+      from:  ENV['TWILIO_NUMBER'],
+      to:    ENV['PERSONAL_NUMBER'],
+      body:  message_body)
   end
 
   def message_body
